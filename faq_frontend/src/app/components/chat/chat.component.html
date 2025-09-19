@@ -1,0 +1,31 @@
+<div style="display:flex; flex-direction:column; height:100%;">
+  <div style="padding:14px 16px; border-bottom: 1px solid rgba(2,6,23,0.06); display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:10px; height:10px; border-radius:9999px; background: {{status() === 'connected' ? '#22c55e' : status() === 'connecting' ? '#f59e0b' : '#ef4444'}};"></div>
+      <div style="font-weight:600">AI FAQ Assistant</div>
+      <div class="text-muted" style="font-size:12px; margin-left:8px;">Status: {{ status() }}</div>
+    </div>
+    <div class="text-muted" style="font-size:12px;">Ocean Professional</div>
+  </div>
+
+  <div style="flex:1; overflow: auto; padding: 16px; display:flex; flex-direction:column; gap: 12px;">
+    <div *ngFor="let m of messages()" [attr.data-role]="m.role" class="message">
+      <div class="bubble" [class.user]="m.role==='user'" [class.assistant]="m.role==='assistant'">
+        <div class="role" [class.user]="m.role==='user'">{{ m.role === 'user' ? 'You' : 'Assistant' }}</div>
+        <div class="content">{{ m.content }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 12px; border-top: 1px solid rgba(2,6,23,0.06);">
+    <form (ngSubmit)="send()" style="display:flex; gap:10px;">
+      <input class="input" [(ngModel)]="input" name="message" placeholder="Ask a question about your FAQs..." aria-label="Message">
+      <button type="submit" class="btn primary interactive" aria-label="Send">
+        <span>Send</span>
+      </button>
+    </form>
+    <div class="text-muted" style="font-size:12px; margin-top: 8px;">
+      Tip: Use natural language. Example: "How do I reset my password?"
+    </div>
+  </div>
+</div>

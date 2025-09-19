@@ -1,0 +1,14 @@
+<div style="margin-top: 8px;">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom: 10px;">
+    <div style="font-weight: 700;">Documents</div>
+    <button class="btn ghost interactive" (click)="refresh()">Refresh</button>
+  </div>
+  <div *ngIf="loading()">Loading...</div>
+  <div style="display:grid; grid-template-columns: 1fr; gap: 8px; max-height: 200px; overflow:auto; padding-right:6px;">
+    <div *ngFor="let d of docs()" class="interactive" style="padding:10px; border-radius:12px; border:1px solid rgba(2,6,23,0.06); background:#ffffff;">
+      <div style="font-weight:600;">{{ d.title }}</div>
+      <div class="text-muted" style="font-size:12px;">{{ d.source }}</div>
+      <div class="text-muted" style="font-size:12px; margin-top:4px;" *ngIf="d.summary">{{ d.summary }}</div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,56 @@
-<div class="container">
-  <h1>{{ title }}</h1>
+<div class="app-shell">
+  <!-- Top Navigation -->
+  <header class="surface" style="border-radius: 0 0 var(--radius) var(--radius);">
+    <div class="container" style="padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:38px; height:38px; border-radius:12px; background: linear-gradient(135deg, #3b82f6, #2563EB); box-shadow: inset 0 1px 2px rgba(255,255,255,.3), 0 10px 20px rgba(37,99,235,.25);"></div>
+        <div>
+          <div style="font-weight: 700; letter-spacing:.2px;">IntelliFAQ</div>
+          <div class="text-muted" style="font-size:12px;">Ocean Professional UI</div>
+        </div>
+      </div>
+      <nav style="display:flex; gap:10px; align-items:center;">
+        <a class="btn ghost interactive" routerLink="/">Home</a>
+        <a class="btn ghost interactive" routerLink="/faq">FAQs</a>
+        <a class="btn secondary interactive" routerLink="/docs">Documents</a>
+        <a class="btn primary interactive" routerLink="/chat">Open Chat</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 28px; padding-bottom: 28px;">
+    <div class="gradient-subtle" style="border-radius: var(--radius); padding: 18px; border: 1px solid rgba(2,6,23,0.06); margin-bottom: 16px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:8px; height:8px; border-radius:9999px; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.18)"></div>
+        <div><strong>Connected</strong> to AI FAQ Assistant. Type a question or pick a FAQ.</div>
+      </div>
+    </div>
+
+    <section style="display: grid; grid-template-columns: 350px 1fr; gap: 20px;">
+      <!-- Left: FAQ / Documents -->
+      <div class="card" style="padding: 16px;">
+        <app-faq-list (ask)="handleAsk($event)"></app-faq-list>
+        <div style="height: 12px;"></div>
+        <app-doc-list></app-doc-list>
+      </div>
+
+      <!-- Right: Chatbot -->
+      <div class="card" style="padding: 0; display:flex; flex-direction:column; min-height: 68vh;">
+        <app-chat></app-chat>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap: wrap;">
+      <div class="text-muted">© {{year}} IntelliFAQ. All rights reserved.</div>
+      <div style="display:flex; gap:12px;">
+        <a class="text-muted interactive" href="#" aria-label="Privacy">Privacy</a>
+        <a class="text-muted interactive" href="#" aria-label="Terms">Terms</a>
+        <a class="text-muted interactive" href="#" aria-label="Support">Support</a>
+      </div>
+    </div>
+  </footer>
 </div>
